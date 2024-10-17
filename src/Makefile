@@ -1,15 +1,15 @@
 # List of object files
-OBJS = uimain.o history.o 
+OBJS = uimain.o  
 
 # Compiler flags for debugging and optimization
 CFLAGS = -g -O3
 
 # First target to build by default
-all: tokenizer
+all: tokenize
 
 # tokenizer depends on uimain.o and history.o (generated from uimain.c and history.c)
-tokenizer: $(OBJS)
-	$(CC) -o tokenizer $(CFLAGS) $(OBJS)
+tokenize: $(OBJS)
+	$(CC) -o tokenize $(CFLAGS) $(OBJS)
 
 # Build object files for .c files
 uimain.o: uimain.c tokenizer.h history.h
@@ -20,8 +20,8 @@ history.o: history.c history.h
 
 # Clean rule to remove generated object files and the final executable
 clean:
-	rm -f *.o tokenizer
+	rm -f *.o tokenize
 
 # Run the program after building it
-run: tokenizer
-	./tokenizer
+run: tokenize
+	./tokenize
